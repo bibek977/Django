@@ -1,7 +1,18 @@
 from django.http import HttpResponse
+from django.shortcuts import render
 
 def index(request):
-    return HttpResponse("<h1>Django project</h1>")
+    data={'title':'HomePage'}
+    return render(request, 'index.html',data)
 
+def features(request):
+    return HttpResponse("<h1>Feature Page</h1>")
+
+def contact(request):
+    return render(request, 'contact.html')
+    
 def about(request):
-    return HttpResponse("<h1>About Page</h1>")
+    phoneNumber = request.GET.get('number','98000000')
+    print(phoneNumber)
+    return HttpResponse("<h1>About Page</h1> <br>" + phoneNumber)
+
