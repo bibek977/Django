@@ -14,5 +14,8 @@ def contact(request):
 def about(request):
     phoneNumber = request.GET.get('number','98000000')
     print(phoneNumber)
-    return HttpResponse("<h1>About Page</h1> <br>" + phoneNumber)
+    params = {
+        'givenInput': phoneNumber
+    }
+    return render(request, 'about.html',params)
 
